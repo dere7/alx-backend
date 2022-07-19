@@ -87,7 +87,7 @@ def before_request():
 def home() -> str:
     """home displays 'hello world'"""
     current_time = format_datetime(datetime.now(), 'LLL d, Y, H:mm:ss a')
-    return render_template('8-index.html', current_time=current_time)
+    return render_template('index.html', current_time=current_time)
 
 
 if __name__ == '__main__':

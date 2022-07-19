@@ -28,8 +28,9 @@ def get_locale() -> Optional[str]:
         return request.args['locale']
 
     # locale from user setting
-    if g.user and g.user.get('locale') in app.config['LANGUAGES']:
-        return g.user.get('locale')
+    user = getattr(g, 'user', None)
+    if user and user.get('locale') in app.config['LANGUAGES']:
+        return user.get('locale')
 
     # locale from request header
     return request.accept_languages.best_match(app.config['LANGUAGES'])
